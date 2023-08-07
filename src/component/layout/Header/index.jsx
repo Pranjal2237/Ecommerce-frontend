@@ -1,10 +1,8 @@
-import React from "react";
-import logo from "../../../assets/images/logo.png";
+import React, { useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import { useDispatch, useSelector } from "react-redux";
-import Profile from "../Profile";
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
@@ -13,18 +11,20 @@ import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { logoutUser } from "../../../redux/slice/loginSlice";
 
-const Header = () => {
+const Header = ({setKeyword}) => {
+  const [option, setOption] = useState("Home");
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate("/login");
+    navigate("/login"); 
+      setOption("");
   };
 
   return (
-    <Box>
+    <Box style={{ position: "sticky", top: "0", zIndex: "10" }}>
       <Box bgcolor={"#7E33E0"}>
         <Box
           sx={{
@@ -195,6 +195,9 @@ const Header = () => {
                         fontWeight: "500",
                         "&:hover": { fontWeight: "600" },
                       }}
+                      onClick={() => {
+                  setOption("");
+                }}
                     >
                       Orders
                     </Typography>
@@ -213,6 +216,9 @@ const Header = () => {
                         fontSize: "14px",
                         fontWeight: "500",
                         "&:hover": { fontWeight: "600" },
+                      }}
+                      onClick={() => {
+                  setOption("");
                       }}
                     >
                       Wishlist
@@ -233,6 +239,9 @@ const Header = () => {
                         fontWeight: "500",
                         "&:hover": { fontWeight: "600" },
                       }}
+                      onClick={() => {
+                  setOption("");
+                      }}
                     >
                       Cart
                     </Typography>
@@ -251,6 +260,9 @@ const Header = () => {
                         fontSize: "14px",
                         fontWeight: "500",
                         "&:hover": { fontWeight: "600" },
+                      }}
+                      onClick={() => {
+                  setOption("");
                       }}
                     >
                       Edit Profile
@@ -331,50 +343,80 @@ const Header = () => {
           )}
         </Box>
       </Box>
-      <Box
-        className="container"
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          p: "15px 0px",
-          alignItems: "center",
-        }}
-      >
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Box
-            component={"h1"}
-            fontWeight="800"
-            color="#0D0E43"
-            fontSize="2rem"
-          >
-            Ecommerce
-          </Box>
-        </Link>
-        <Stack
-          direction="row"
-          spacing={5}
+      <Box sx={{ backgroundColor: "white" }}>
+        <Box
+          className="container"
           sx={{
-            ">a": {
-              textDecoration: "none",
-              color: "black",
-              "&:hover": { color: "#FB2E86" },
-            },
+            display: "flex",
+            justifyContent: "space-between",
+            p: "15px 0px",
+            alignItems: "center",
           }}
         >
-          <Link to="/">
-            <Typography>Home</Typography>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Box
+              component={"h1"}
+              fontWeight="800"
+              color="#0D0E43"
+              fontSize="2rem"
+            >
+              Ecommerce
+            </Box>
           </Link>
-          <Link to="/products">
-            <Typography>Products</Typography>
-          </Link>
-          <Link to="/contact">
-            <Typography>Contact</Typography>
-          </Link>
-          <Link to="/about">
-            <Typography>About</Typography>
-          </Link>
-        </Stack>
-        <SearchBar />
+          <Stack
+            direction="row"
+            spacing={5}
+            sx={{
+              ">a": {
+                textDecoration: "none",
+                color: "black",
+                "&:hover": { color: "#FB2E86" },
+              },
+            }}
+          >
+            <Link to="/">
+              <Typography
+                sx={{ color: option === "Home" && "#FB2E86" }}
+                onClick={() => {
+                  setOption("Home");
+                }}
+              >
+                Home
+              </Typography>
+            </Link>
+            <Link to="/products">
+              <Typography
+                sx={{ color: option === "Products" && "#FB2E86" }}
+                onClick={() => {
+                  setOption("Products");
+                }}
+              >
+                Products
+              </Typography>
+            </Link>
+            <Link to="/contact">
+              <Typography
+                sx={{ color: option === "Contact" && "#FB2E86" }}
+                onClick={() => {
+                  setOption("Contact");
+                }}
+              >
+                Contact
+              </Typography>
+            </Link>
+            <Link to="/about">
+              <Typography
+                sx={{ color: option === "About" && "#FB2E86" }}
+                onClick={() => {
+                  setOption("About");
+                }}
+              >
+                About
+              </Typography>
+            </Link>
+          </Stack>
+          <SearchBar setCategory={setKeyword} setOption={setOption} />
+        </Box>
       </Box>
     </Box>
   );

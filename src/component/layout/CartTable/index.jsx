@@ -1,5 +1,5 @@
-import { Box, Button, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Box,Typography } from "@mui/material";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,21 +8,31 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useDispatch, useSelector } from "react-redux";
-import { AddCard } from "@mui/icons-material";
 import { addCart, deleteCart } from "../../../redux/slice/loginSlice";
 import CancelIcon from "@mui/icons-material/Cancel";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
 
 const CartTable = () => {
   const state = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
-  const handleChange = (e, product_id) => {
-    dispatch(addCart({ quantity: e.target.value, product_id }));
-  };
+  const handleAdd=(quantity,product_id)=>{
+    dispatch(addCart({ quantity:quantity+1, product_id }));
+  }
+
+  const handleRemove=(quantity,product_id,cart_id)=>{
+    if(quantity===1)
+    {
+      dispatch(deleteCart(cart_id));
+    }
+    else{
+      dispatch(addCart({ quantity:quantity-1, product_id }));
+    }
+  }
 
   const handleDelete = (cart_id) => {
-    console.log(cart_id);
     dispatch(deleteCart(cart_id));
   };
 
@@ -55,9 +65,9 @@ const CartTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {state?.userLogin?.data?.user.cartItems.map((row, index) => (
+            {state?.userLogin?.data?.user.cartItems.map((product, index) => (
               <TableRow
-                key={row.name}
+                key={product.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell scope="row" sx={{ p: "16px 0px" }}>
@@ -86,18 +96,18 @@ const CartTable = () => {
                           fontSize: "1rem",
                         }}
                         onClick={() => {
-                          handleDelete(row._id);
+                          handleDelete(product._id);
                         }}
                       />
                       <img
-                        src={`http://localhost:4000/assets/${row.images[0].public_id}`}
+                        src={`http://localhost:4000/assets/${product.images[0].public_id}`}
                         alt=""
                         width="80%"
                         style={{ margin: "auto" }}
                       />
                     </Box>
                     <Typography sx={{ color: "#A1A8C1" }}>
-                      {row.name}
+                      {product.name}
                     </Typography>
                   </Box>
                 </TableCell>
@@ -111,18 +121,14 @@ const CartTable = () => {
                     textAlign: "left",
                   }}
                 >
-                  Rs. {row.price}
+                  Rs. {product.price}
                 </TableCell>
-                <TableCell align="right">
-                  <input
-                    type="number"
-                    value={row.quantity}
-                    defaultValue={row.quantity}
-                    onChange={(e) => {
-                      handleChange(e, row.product_id);
-                    }}
-                    style={{ width: "50px", outline: "none", height: "20px" }}
-                  />
+                <TableCell align="right" sx={{p:"16px 0px"}}>
+                  <div style={{display:"flex"}}>
+                    <button onClick={()=>{handleRemove(product.quantity,product.product_id,product._id)}} className="change-btn" style={{cursor:"pointer"}}><RemoveIcon/></button>
+                    <button className="change-btn">{product.quantity}</button>
+                    <button onClick={()=>{handleAdd(product.quantity,product.product_id)}} className="change-btn" style={{cursor:"pointer"}}><AddIcon/></button>
+                  </div>
                 </TableCell>
                 <TableCell
                   align="right"
@@ -134,7 +140,7 @@ const CartTable = () => {
                     textAlign: "right",
                   }}
                 >
-                  Rs. {row.quantity * row.price}
+                  Rs. {product.quantity * product.price}
                 </TableCell>
               </TableRow>
             ))}

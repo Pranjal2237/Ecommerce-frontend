@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllWishList } from "../redux/slice/WishListSlice";
 import { deleteWishList } from "../redux/slice/WishListSlice";

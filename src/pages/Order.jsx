@@ -2,8 +2,8 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllOrders } from "../redux/slice/orderSlice";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Link } from "react-router-dom";
+import emptyWishlist from "../assets/images/emptywishlist.jpg";
+import EmptyItem from "../component/layout/EmptyItem";
 import OrderCard from "../component/layout/OrderCard";
 
 const Order = () => {
@@ -60,7 +60,12 @@ const Order = () => {
             ))}
           </Box>
         ) : (
-          <Box></Box>
+          <EmptyItem
+            image={emptyWishlist}
+            title="Your Orderlist is empty!"
+            description="Add items that you like. Review them anytime and easily."
+            maxwidth="50%"
+          />
         )}
       </Box>
     </Box>

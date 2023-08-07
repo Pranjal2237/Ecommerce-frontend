@@ -1,27 +1,18 @@
 import { Paper, IconButton } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { getProducts } from "../../../redux/slice/productsSlice";
 import { useNavigate } from "react-router-dom";
 
-const SearchBar = () => {
-  const [keyword, setkeyword] = useState("");
+const SearchBar = ({setCategory,setOption}) => {
+  const [keyword, setkeyword] =useState("");
   const navigate = useNavigate();
-
-  const dispatch = useDispatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const check = {
-      currentPage: 1,
-      rating: 0,
-      priceL: 0,
-      priceH: 10000000000,
-      keyword: keyword,
-    };
-    dispatch(getProducts(check));
     navigate("/products");
+    setCategory(keyword);
+    setkeyword("");
+    setOption("Products")
   };
 
   return (

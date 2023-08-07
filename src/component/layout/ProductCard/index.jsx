@@ -18,7 +18,6 @@ const ProductCard = () => {
   
   const navigate=useNavigate();
   const dispatch = useDispatch();
-  const disp=useDispatch();
   const state = useSelector((state) => state);
   let a=[];
   
@@ -27,11 +26,14 @@ const ProductCard = () => {
   });
 
 
-  const handleAdd =(product_id)=>{
+  const handleAdd =(product_id,product_name)=>{
     dispatch(addCart({quantity:1,product_id}))
     if(state?.userLogin?.data==null)
     {
       navigate("/login");
+    }
+    else{
+      alert(`${product_name} added to your cart`)
     }
   }
 
@@ -54,12 +56,9 @@ const ProductCard = () => {
       navigate("/login");
     }
   }
-  useEffect(() => {
-    dispatch(getProducts());
-    },[]);
-
+ 
     useEffect(()=>{
-      disp(getAllWishList())
+      dispatch(getAllWishList())
     },[state.wishlist?.data?.wishList,state.wishlist?.data?.message])
 
 
@@ -104,11 +103,9 @@ const ProductCard = () => {
             />
           </Box>
           <Typography sx={{color:"#9295AA",fontSize:"11px",mb:"5px"}}>{product.description}</Typography>
-          {/* <Link to="/cart"> */}
-          <StyledButton onClick={()=> handleAdd(product._id)}>
+          <StyledButton onClick={()=> handleAdd(product._id,product.name)}>
             <ShoppingCartOutlinedIcon />
           </StyledButton>
-          {/* </Link> */}
           {a.includes(product._id)?(<StyledButton onClick={()=>{handleRemoveWishlist(product._id)}}><FavoriteIcon sx={{color:'red'}}/></StyledButton>):(<StyledButton onClick={()=>{handleWishList(product._id,index)}}>
             <FavoriteBorderOutlinedIcon />
           </StyledButton>)}

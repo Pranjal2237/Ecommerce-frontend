@@ -6,9 +6,9 @@ const EmptyItem = ({
   image,
   title,
   description,
-  buttonContent,
-  navigation,
-  maxwidth
+  buttonContent = "",
+  navigation = "/",
+  maxwidth,
 }) => {
   const navigate = useNavigate();
 
@@ -16,30 +16,39 @@ const EmptyItem = ({
     navigate(navigation);
   };
   return (
-      <Box
+    <Box
+      sx={{
+        maxWidth: "60%",
+        textAlign: "center",
+        m: "auto",
+        minHeight: "400px",
+      }}
+    >
+      <Box sx={{ maxWidth: maxwidth, margin: "auto" }}>
+        <img src={image} alt="" />
+      </Box>
+      <Typography
         sx={{
-          maxWidth: "60%",
-          textAlign: "center",
-          m: "auto",
-          minHeight: "400px",
+          fontSize: "18px",
+          color: "#151875",
+          fontWeight: "600",
+          mt: "20px",
         }}
       >
-        <Box sx={{ maxWidth: maxwidth, margin: "auto" }}>
-          <img src={image} alt="" />
-        </Box>
-        <Typography
-          sx={{
-            fontSize: "18px",
-            color: "#151875",
-            fontWeight: "600",
-            mt: "20px",
-          }}
-        >
-          {title}
-        </Typography>
-        <Typography sx={{maxWidth:"56%",m:"auto", fontSize: "13px",color: "#A9ACC6", mt: "7px"}}>
-          {description}
-        </Typography>
+        {title}
+      </Typography>
+      <Typography
+        sx={{
+          maxWidth: "56%",
+          m: "auto",
+          fontSize: "13px",
+          color: "#A9ACC6",
+          mt: "7px",
+        }}
+      >
+        {description}
+      </Typography>
+      {buttonContent && (
         <Button
           sx={{
             textTransform: "none",
@@ -52,7 +61,8 @@ const EmptyItem = ({
         >
           {buttonContent}
         </Button>
-      </Box>
+      )}
+    </Box>
   );
 };
 

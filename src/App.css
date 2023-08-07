@@ -304,3 +304,13 @@ main{
 .profile-main-div:hover .header-subprofile-div{
     display: block;
 }
+
+.change-btn{
+    padding: 0.5rem;
+    background-color: white;
+    outline: none;
+    font-size: 14px;
+}
+.change-btn:not(:first-child){
+    border-left: none;
+}

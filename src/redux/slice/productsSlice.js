@@ -14,7 +14,6 @@ export const getProducts = createAsyncThunk(
     let link = `http://localhost:4000/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}`;
 
     if (category) {
-      console.log("checked");
       link = `http://localhost:4000/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}&category=${category}`;
     }
 

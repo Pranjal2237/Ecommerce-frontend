@@ -19,13 +19,11 @@ export const loginUser=createAsyncThunk('loginUser',async({email,password})=>{
 
 export const loadUser=createAsyncThunk('loadUser',async()=>{
     const response=await Axios.get(`http://localhost:4000/app/v1/user`,{withCredentials:true});
-    console.log(response.data)
     return response.data
 })
 
 export const logoutUser=createAsyncThunk('logoutUser',async()=>{
     const response=await Axios.get(`http://localhost:4000/app/v1/logout`,{withCredentials:true})
-    console.log(response.data);
     return response.data;
 })
 
@@ -37,7 +35,6 @@ export const updateUser=createAsyncThunk('updateUser',async(profile)=>{
     }
 
     const response=await Axios.post(`http://localhost:4000/app/v1/user/update`,profile,config);
-    console.log(response.data)
     return response.data;
 })
 
