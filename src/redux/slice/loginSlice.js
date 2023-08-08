@@ -11,19 +11,19 @@ export const loginUser=createAsyncThunk('loginUser',async({email,password})=>{
         email,
         password
     }
-    const response=await Axios.post(`http://localhost:4000/app/v1/login`,
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/login`,
     body,
     config);
     return response.data;
 });
 
 export const loadUser=createAsyncThunk('loadUser',async()=>{
-    const response=await Axios.get(`http://localhost:4000/app/v1/user`,{withCredentials:true});
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/user`,{withCredentials:true});
     return response.data
 })
 
 export const logoutUser=createAsyncThunk('logoutUser',async()=>{
-    const response=await Axios.get(`http://localhost:4000/app/v1/logout`,{withCredentials:true})
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/logout`,{withCredentials:true})
     return response.data;
 })
 

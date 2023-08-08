@@ -4,7 +4,7 @@ import Axios from 'axios'
 
 export const getAllOrders=createAsyncThunk('getAllOrders',async()=>{
 
-    const response=await Axios.get(`http://localhost:4000/app/v1/orders`,{withCredentials:true})
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/orders`,{withCredentials:true})
     console.log(response.data);
     return response.data;
 })
@@ -14,7 +14,7 @@ export const getSingleOrder=createAsyncThunk('getSingleOrder',async({order_id,pr
     console.log(order_id);
     console.log(product_id);
 
-    const response=await Axios.get(`http://localhost:4000/app/v1/order/${order_id}/${product_id}`,{withCredentials:true})
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/order/${order_id}/${product_id}`,{withCredentials:true})
     console.log(response.data)
     return response.data;
 })
@@ -36,7 +36,7 @@ export const newOrder=createAsyncThunk('newOrder',async({shippingInfo,orderItems
     }
     console.log(body);
 
-    const response=await Axios.post(`http://localhost:4000/app/v1/order/new`,body,config)
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/order/new`,body,config)
     console.log(response.data)
     return response.data;
 })

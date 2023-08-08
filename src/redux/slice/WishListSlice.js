@@ -7,20 +7,20 @@ export const newWishList=createAsyncThunk('newWishList',async(product_id)=>{
         "Content-Type":"application/json",
         withCredentials:true
     }
-    const response=await Axios.post(`http://localhost:4000/app/v1/wishlist/${product_id}`,{},config);
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/wishlist/${product_id}`,{},config);
     console.log(response.data);
     return response.data;
 })
 
 export const getAllWishList=createAsyncThunk('getAllWishList',async()=>{
 
-    const response=await Axios.get(`http://localhost:4000/app/v1/wishlist`,{withCredentials:true})
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/wishlist`,{withCredentials:true})
     return response.data;
 })
 
 export const deleteWishList=createAsyncThunk('deleteWishList',async(product_id)=>{
 
-    const response=await Axios.delete(`http://localhost:4000/app/v1/user/wishlist/${product_id}`,{withCredentials:true})
+    const response=await Axios.delete(`https://ecomerceserver.onrender.com/app/v1/user/wishlist/${product_id}`,{withCredentials:true})
     return response.data;
 })
 

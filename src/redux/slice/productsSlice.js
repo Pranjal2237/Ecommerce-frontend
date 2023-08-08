@@ -11,10 +11,10 @@ export const getProducts = createAsyncThunk(
     priceH = 10000000000,
     keyword = "",
   }) => {
-    let link = `http://localhost:4000/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}`;
+    let link = `https://ecomerceserver.onrender.com/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}`;
 
     if (category) {
-      link = `http://localhost:4000/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}&category=${category}`;
+      link = `https://ecomerceserver.onrender.com/app/v1/products?keyword=${keyword}&page=${currentPage}&rating[gte]=${rating}&price[gte]=${priceL}&price[lte]=${priceH}&category=${category}`;
     }
 
     const response = await Axios.get(link);

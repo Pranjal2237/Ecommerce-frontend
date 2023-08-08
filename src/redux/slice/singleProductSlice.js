@@ -2,7 +2,7 @@ import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 import Axios from 'axios'
 
 export const getSingleProduct=createAsyncThunk('getSingleProduct',async (product_id)=>{
-    const response=await Axios.get(`http://localhost:4000/app/v1/product/${product_id}`);
+    const response=await Axios.get(`https://ecomerceserver.onrender.com/app/v1/product/${product_id}`);
     return response.data;
 })
 
@@ -11,7 +11,7 @@ export const reviewProduct=createAsyncThunk('reviewProduct',async({rating,commen
         "Content-Type":"application/json",
         withCredentials:true
     }
-    const response=await Axios.post(`http://localhost:4000/app/v1/product/${id}`,{rating,comment},config);
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/product/${id}`,{rating,comment},config);
     console.log(response.data);
     return response.data;
 })
