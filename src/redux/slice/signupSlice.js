@@ -11,7 +11,6 @@ export const signupUser=createAsyncThunk('signupUser',async({name,email,password
         password
     }
     const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/ragister`,body,config);
-    console.log(response.data);
     return response.data;
 })
 

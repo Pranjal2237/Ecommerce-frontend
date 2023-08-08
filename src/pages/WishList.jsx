@@ -55,7 +55,7 @@ const WishList = () => {
                   return (
                     <Box sx={{ position: "relative" }}>
                       <SliderCard
-                        image={`http://localhost:4000/assets/${wishlist.wishListProduct.images[0].public_id}`}
+                        image={`https://ecomerceserver.onrender.com/assets/${wishlist.wishListProduct.images[0].public_id}`}
                         Product={wishlist.wishListProduct.name}
                         price={wishlist.wishListProduct.price}
                       />

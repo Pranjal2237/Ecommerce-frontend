@@ -37,7 +37,7 @@ const SingleProductInformation = () => {
         className="singleProduct-img-div"
       >
         <img
-          src={`http://localhost:4000/assets/${product?.data?.pro.images[0].public_id}`}
+          src={`https://ecomerceserver.onrender.com/assets/${product?.data?.pro.images[0].public_id}`}
           alt=""
           style={{ width: "90%", objectFit: "cover", margin: "auto" }}
         />

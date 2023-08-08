@@ -83,7 +83,7 @@ const ProductCard = () => {
         <Box sx={{ width:"40%",backgroundColor:"#F5F5F5",p:"25px 0px",flexShrink:"0"}}>
           <Link to={`/product/${product._id}`} style={{display:"flex",width:"100%"}} >
             <img
-              src={`http://localhost:4000/assets/${product.images[0].public_id}`}
+              src={`https://ecomerceserver.onrender.com/assets/${product.images[0].public_id}`}
               alt=""
               style={{ width: "80%", objectFit: "cover",margin:"auto" }}
             />

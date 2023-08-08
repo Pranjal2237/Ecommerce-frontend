@@ -100,7 +100,7 @@ const CartTable = () => {
                         }}
                       />
                       <img
-                        src={`http://localhost:4000/assets/${product.images[0].public_id}`}
+                        src={`https://ecomerceserver.onrender.com/assets/${product.images[0].public_id}`}
                         alt=""
                         width="80%"
                         style={{ margin: "auto" }}

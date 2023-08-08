@@ -29,7 +29,7 @@ const OrderCard = ({order_id,product_id,image,name,quantity,price}) => {
           }}
         >
           <img
-            src={`http://localhost:4000/assets/${image}`}
+            src={`https://ecomerceserver.onrender.com/assets/${image}`}
             alt=""
             style={{ width: "90%", margin: "auto" }}
           />

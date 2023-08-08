@@ -40,7 +40,7 @@ const SingleOrder = () => {
             }}
           >
             <img
-              src={`http://localhost:4000/assets/${orderData?.data?.product[0]?.images[0].public_id}`}
+              src={`https://ecomerceserver.onrender.com/assets/${orderData?.data?.product[0]?.images[0].public_id}`}
               alt=""
               style={{ width: "85%", margin: "auto" }}
             />
