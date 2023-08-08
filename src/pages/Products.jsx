@@ -11,7 +11,7 @@ const Products = ({ keyword }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{display:"flex",flexDirection:"column"}}>
       <div className="container product-flex-div">
         <SideBar
           currentPage={newPage}
@@ -24,9 +24,10 @@ const Products = ({ keyword }) => {
         count={5}
         page={newPage}
         onChange={handleChange}
-        sx={{ mt: "30px", borderRadius: "4px" }}
+        sx={{m:"auto",mt: "30px"}}
         size="large"
-        color="secondary"
+        shape="rounded"
+        color='secondary'
       />
     </Box>
   );

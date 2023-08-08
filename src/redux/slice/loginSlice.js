@@ -34,7 +34,7 @@ export const updateUser=createAsyncThunk('updateUser',async(profile)=>{
         withCredentials:true
     }
 
-    const response=await Axios.post(`http://localhost:4000/app/v1/user/update`,profile,config);
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/user/update`,profile,config);
     return response.data;
 })
 
@@ -45,7 +45,7 @@ export const addCart=createAsyncThunk('addCart',async({quantity,product_id})=>{
         withCredentials:true
     }
 
-    const response=await Axios.post(`http://localhost:4000/app/v1/cart/new/${product_id}`,{quantity},config)
+    const response=await Axios.post(`https://ecomerceserver.onrender.com/app/v1/cart/new/${product_id}`,{quantity},config)
 
     console.log(response.data)
     return response.data;
@@ -55,7 +55,7 @@ export const addCart=createAsyncThunk('addCart',async({quantity,product_id})=>{
 export const deleteCart=createAsyncThunk('deleteCart',async(cart_id)=>{
 
 
-    const response=await Axios.delete(`http://localhost:4000/app/v1/user/cart/${cart_id}`,{withCredentials:true});
+    const response=await Axios.delete(`https://ecomerceserver.onrender.com/app/v1/user/cart/${cart_id}`,{withCredentials:true});
     return response.data;
 })
 
