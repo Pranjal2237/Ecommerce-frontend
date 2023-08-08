@@ -26,8 +26,7 @@ const Products = ({ keyword }) => {
         onChange={handleChange}
         sx={{ mt: "30px", borderRadius: "4px" }}
         size="large"
-        color="#FB4997"
-        borderRadius="4px"
+        color="secondary"
       />
     </Box>
   );
