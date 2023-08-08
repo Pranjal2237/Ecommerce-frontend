@@ -22,11 +22,6 @@ const SingleProductInformation = () => {
     alert(`${product?.data?.pro.name} is added to your cart`);
   };
 
-  const handleWishList = (product_id) => {
-    dispat(newWishList(product_id));
-    alert(`${product?.data?.pro.name} is added to your wishList`);
-  };
-
   return (
     <Box
       className="container singleProductInfo-main-div"
@@ -53,6 +48,7 @@ const SingleProductInformation = () => {
           value={product?.data?.pro.rating}
           readOnly
           sx={{ mt: "7px" }}
+          fontSize="1.2rem"
         />
         <Typography
           sx={{

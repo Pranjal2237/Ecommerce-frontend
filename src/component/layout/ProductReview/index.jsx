@@ -122,7 +122,7 @@ const ProductReview = () => {
           state?.singleProduct?.data.pro.reviews.slice(0, 4).map((user) => {
             return (
               <Box sx={{ borderBottom: "1px solid #E6E6E6", p: "10px 0px" }}>
-                <Rating name="read-only" value={user.rating} readOnly />
+                <Rating name="read-only" value={user.rating} readOnly fontSize="1.2rem" />
                 <Typography sx={{ fontSize: "13px", color: "#A9ACC6" }}>
                   {user.comment}
                 </Typography>

@@ -91,7 +91,7 @@ const CartTable = () => {
                         sx={{
                           cursor: "pointer",
                           position: "absolute",
-                          left: "94%",
+                          left: "90%",
                           bottom: "90%",
                           fontSize: "1rem",
                         }}

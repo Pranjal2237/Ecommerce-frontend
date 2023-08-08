@@ -174,7 +174,7 @@ const SideBar = ({ currentPage, keyword = "",setnewPage }) => {
                 }}
                 style={{ marginRight: "10px" }}
               />
-              <Rating name="rating" value={key} readOnly />
+              <Rating name="rating" value={key} readOnly fontSize="1.2rem" />
             </Box>
           );
         })}

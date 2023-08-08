@@ -13,9 +13,6 @@ const SingleProduct = () => {
     <Stack>
         <SingleProductInformation/>
         <ProductDescription/>
-        {/* {state?.singleProduct?.data!==null ? (state?.singleProduct?.data!==null ? (<SimilerProduct/>) :(console.log('data not present'))):(console.log('null'))}  */}
-        {/* <SimilerProduct/> */}
-        
     </Stack>
   )
 }

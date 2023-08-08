@@ -53,7 +53,7 @@ const SearchBar = ({setCategory,setOption}) => {
           }
         }}
       >
-        <Search />
+        <Search fontSize="1.2rem" />
       </IconButton>
     </Paper>
   );
